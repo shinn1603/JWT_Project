@@ -36,15 +36,15 @@ public class GlobalExceptionHandler {
             return errorDetail;
         }
 
-        if (exception instanceof BadJOSEException || (exception.getCause() instanceof BadJOSEException)) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(401), exception.getMessage());
-            errorDetail.setProperty("description", "The JWT signature is invalid");
-            return errorDetail;
-        }
-
         if (exception instanceof BadJWTException || (exception.getCause() instanceof BadJWTException)) {
             errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(401), exception.getMessage());
             errorDetail.setProperty("description", "The JWT token has expired");
+            return errorDetail;
+        }
+
+        if (exception instanceof BadJOSEException || (exception.getCause() instanceof BadJOSEException)) {
+            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(401), exception.getMessage());
+            errorDetail.setProperty("description", "The JWT signature is invalid");
             return errorDetail;
         }
 
