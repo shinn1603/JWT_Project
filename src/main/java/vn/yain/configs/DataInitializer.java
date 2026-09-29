@@ -16,7 +16,7 @@ public class DataInitializer {
         return args -> {
             if (userRepository.findByEmail("tho8189@gmail.com").isEmpty()) {
                 User user = new User();
-                user.setFullName("Nguyễn Phước Thọ (24110343)");
+                user.setFullName("Nguyễn Phước Thọ");
                 user.setEmail("tho8189@gmail.com");
                 user.setPassword(passwordEncoder.encode("123456"));
                 user.setImages("default.jpg");
